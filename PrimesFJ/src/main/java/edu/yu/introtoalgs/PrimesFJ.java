@@ -22,14 +22,11 @@ public class PrimesFJ implements PrimeCalculator {
      *
      */
     public PrimesFJ() {
-        // your code (if any) goes here
-        threshold = 2500; // I have no idea if this is a good threshold
-        // I will change it later
+        threshold = 2500;
     }
 
     /**
      * This method is used for testing, so I can easily change the threshold on the fly
-     * Since I am only using it internally, I am not checking to make sure it works
      * @param newThreshold what we are changing threshold to
      */
     protected void changeThreshold(int newThreshold) {
@@ -39,15 +36,12 @@ public class PrimesFJ implements PrimeCalculator {
     @Override
     public int nPrimesInRange(final long start, final long end) {
         SerialPrimes.verifyInput(start, end);
-        //System.out.println("Starting searching for end = " + end);
 
         ForkJoinPool pool = new ForkJoinPool(); // I am using the default constructor, which makes based on
             // the number of cores I have
         PrimeSum task = new PrimeSum(threshold, start, end);
         int sum = pool.invoke(task);
-        //System.out.println("Invoking shutdown");
         pool.shutdown();
-        // your code goes here
         return sum;
     }
 
@@ -71,13 +65,11 @@ public class PrimesFJ implements PrimeCalculator {
         @Override
         protected Integer compute() {
             if ((end - start) <= threshold){
-                //System.out.println("Using driver for " + start + " to " + end);
                 SerialPrimes driver = new SerialPrimes();
                 return driver.nPrimesInRange(start, end);
             }
             PrimeSum left = new PrimeSum(threshold, start, (end + start) / 2);
             PrimeSum right = new PrimeSum(threshold, (end + start) / 2 + 1, end);
-            //System.out.println("Splitting between start=" + start + ", midpoint=" + ((end + start) /2) + ", end=" + end);
             left.fork();
             int rightAnswer = right.compute();
             int leftAnswer = left.join();

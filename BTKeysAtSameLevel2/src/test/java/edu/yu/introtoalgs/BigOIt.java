@@ -52,14 +52,7 @@ public class BigOIt extends BigOItBase {
 
     private double applyDoublingRatio(String bigOMeasurable, long timeOutInMs) {
         stopwatch = new Stopwatch(timeOutInMs);
-        // now I need to figure out how to actually do this
-        // first I am going to make a version that doesn't bother with a timeout, and just calculates forever
-        // Once I have some idea that that works, I will figure out how to do the timeout
-        // After I figure that out, I will figure out the JIT warming up, though I might do that earlier if it
-        // is causing problems
-        // let's start by figuring out how to get the string into a class (and groan that we couldn't just use
-        // a lambda, which would make this so much easier
-        // I guess we are supposed to learn how reflect works
+        
         setConstructor(bigOMeasurable);
         // now I will warm up the JVM, hoping that this actually does something and isn't just
         // being silly
@@ -67,10 +60,7 @@ public class BigOIt extends BigOItBase {
         if (!canContinue) {
             return Double.NaN;
         }
-        // now I need to do the actual doubling ratio experiment
-        // I am going to have to tear this apart later when I want to add in the time limit, but for now,
-        // I will ignore that
-        // So, let's figure out how to actually run it
+        
         // Let's run the test for each level, say, 25 times, starting at 1000
         // we will get the average of the times, which will be considered the time for that level
         // in a loop:
@@ -79,12 +69,6 @@ public class BigOIt extends BigOItBase {
         // we return the average ratio
         // otherwise, we reloop
         // which makes this test essentially O(n^2), which is not a good sign
-
-        // I need to decide what ends the outer loop
-        // It looks like it will keep going until something says to end it
-        // So for now, I will just say while diffTime < timeOut
-        // In the long run, that won't be good enough, because that will already be too late,
-        // but it should be fine for now
 
         long previousTime = getAverageTimeInNLevel(50, 100);
         RunningAverage ratioAvg = new RunningAverage(); // this keeps track of the average ratio
@@ -111,7 +95,6 @@ public class BigOIt extends BigOItBase {
             // ratio, so if anything, that is a plus
             double avg = ratioAvg.getRecentAverageWithNewRatio(ratio);
             if (ratioAvg.ratioCloseToAverage(ratio, false) && i > 5) { // if they are very close, we should be there
-                // this might be a bad assumption, but I will learn that via testing
                 // i > 5 is so it doesn't return with bad precision
                 return avg;
             }

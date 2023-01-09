@@ -55,7 +55,7 @@ public class BTKeysAtSameLevel {
      */
     public List<List<Integer>> compute(final String treeInStringRepresentation) {
         // When I look at the string:
-        // First I check the first number, and add it to the list (I think using the recursive method)
+        // First I check the first number, and add it to the list
         // If there is nothing else, we end
         // Otherwise, we check the open parentheses, going into a recursive method
         // This method first looks at the number, adding it to the list of its depth

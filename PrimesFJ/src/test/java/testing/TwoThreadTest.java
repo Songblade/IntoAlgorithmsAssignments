@@ -60,9 +60,5 @@ public class TwoThreadTest {
         SerialTest.testWorksToNLimit(calc, 10000, 1229);
         SerialTest.testWorksToNLimit(calc, 100000, 9592);
     }
-    // test to return efficiency (we are fine with any efficiency, but need to know what it is)
-
-    // test that returns the data I need for the graph
-
 
 }

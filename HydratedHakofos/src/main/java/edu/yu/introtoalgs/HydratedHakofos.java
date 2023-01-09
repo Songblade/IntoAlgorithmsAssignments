@@ -51,8 +51,7 @@ public class HydratedHakofos {
             // problem must be unsolvable
         // If it works, it will return -1, which will be checked first, so it will return true, and
             // it doesn't matter that it was repeating a second time
-        // the efficiency's worst case scenario is 2n
-        // Okay, let's build it
+        // the efficiency's worst case scenario is ~2n
 
         for (int table = 0; table < waterAvailable.length; table++) {
             // I can't use for-each, because I will change the index
@@ -90,7 +89,6 @@ public class HydratedHakofos {
         int currentTable = startingTable;
         int waterTotal = 0;
         do {
-            // I am a little unsure on how to increase the tables
             // we start by visiting the table and drinking, then we check if we can make it to the
                 // next table, and if the next table is the last one, we return
             waterTotal += waterAvailable[currentTable] - waterRequired[currentTable];

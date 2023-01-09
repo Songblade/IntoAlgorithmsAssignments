@@ -15,7 +15,6 @@ public class SerialTest {
     // I think I will make public methods testing correctness which will be called by this class
     // and by the classes for the other tests
 
-    // I'm not entirely sure how this class is supposed to work
     // Should I test if this is divisible by every number from 2 to here, or only the primes?
     // I would think only the primes, because that is the only way that makes sense
     // and besides, I am accumulating a list of primes as I solve the problem
@@ -25,8 +24,6 @@ public class SerialTest {
     // Which feels really stupid, when a better way of doing things is so obvious
     // Even by 2-thread, I feel like my initial ideas of doing it are really suboptimal, except it doesn't look like
     // he wants anything besides PrimesFJ to be optimal
-
-    // Anyway, let's stop Kvetching and write tests at some point
 
     private final PrimeCalculator calc;
 
@@ -117,7 +114,5 @@ public class SerialTest {
         assertEquals(primeCount, calculator.nPrimesInRange(2, n));
         assertEquals(primeCount - 1, calculator.nPrimesInRange(3, n));
     }
-
-    // test that returns the data I need for the graph
 
 }

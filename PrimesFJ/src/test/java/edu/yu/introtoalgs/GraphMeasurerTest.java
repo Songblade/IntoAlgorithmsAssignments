@@ -61,11 +61,6 @@ public class GraphMeasurerTest {
     private void getSpeedOfThreshold(int threshold, boolean shouldPrint) {
         calc.changeThreshold(threshold);
         // this was when I was trying to find the ideal threshold
-        /*long totalTime = 0;
-        for (int i = 0; i < 50; i++) {
-            totalTime += getTimeOfN(calc, 1_000_000);
-        }
-        long averageTime = totalTime / 50;*/
         if (shouldPrint) {
             System.out.println("threshold x: " + threshold);
             System.out.println("efficiency y: " + getEfficiencyForN(calc, 1_000_000));

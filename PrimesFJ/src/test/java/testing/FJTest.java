@@ -63,15 +63,9 @@ public class FJTest {
 
     @Test
     public void testWorksReallyHighNumbers() {
-        //System.out.println(Runtime.getRuntime().availableProcessors());
         SerialTest.testWorksToNLimit(calc, 1_000_000, 78_498);
         SerialTest.testWorksToNLimit(calc, 10_000_000, 664_579);
         SerialTest.testWorksToNLimit(calc, 100_000_000, 5_761_455);
     }
 
-        // must be bigger than serial test: 100,000,000
-    // test to return efficiency (we are fine with any efficiency, but need to know what it is)
-
-    // test that returns the data I need for the graph for performance
-    // test that returns the data I need for the graph for threshold
 }

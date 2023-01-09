@@ -148,8 +148,6 @@ public class HakofosTest {
         // making sure that it is right, and that it is done in a reasonable amount of time
     }
 
-    // I feel like there are important tests that I am missing, but I can't think of them. I'll add them later
-
     // tests that we have O(n) efficiency in the worst case
     // With my current implementation, the worst case should actually be when there are a lot of
         // potential tables

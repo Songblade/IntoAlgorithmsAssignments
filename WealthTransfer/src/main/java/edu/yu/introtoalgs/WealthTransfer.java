@@ -17,16 +17,6 @@ import java.util.Stack;
 public class WealthTransfer {
 
     /*
-    * I deleted most of my notes from before then, because it is about an earlier implementation that I
-    * rejected as too complicated and less efficient.
-    * Having started the assignment, I have thought of two problems.
-    * First, this is getting really complicated.
-    * Second, I'm not sure that the efficiency is actually better. And even if it is, I don't think that I know
-    * how to actually prove that.
-    *
-    * Also, I realized something else. Even if I have a linked-list problem, insertion is still O(1), because I would
-    * have an array implementation of the tree. So I could just go directly to 'to' and change its parent to 'from'.
-    *
     * If I change my implementation to this, it would have an O(N) time for solveIt() and O(1) for everything else.
     * So it would have amortized O(N) for the entire project. Let's figure out exactly what that means. solveIt()
     * starts at the parent and then goes down to its children. Wait, that could be a problem.
@@ -34,8 +24,7 @@ public class WealthTransfer {
     * In order to get solveIt() to work, each parent would need to know about each of its children. Well, that's simple.
     * I could store a LinkedList - or better yet, a HashSet, because that could help with error-detection - of each
     * child of a parent. I wouldn't even need to store ancestry, because I would start at 1, recurse down to the base
-    * of the tree, and then get back up to 1, divide-and-conquer style. I could even do this with ForkJoin. You know
-    * what, let's do this with ForkJoin. Why not? It will get me more used to using ForkJoin.
+    * of the tree, and then get back up to 1, divide-and-conquer style.
     *
     * So, I would have an array of HashSet<Integer> for each node, where the set would store the children of the node.
     * I would have an int representing what percentage of the parent this child is (because only needed on the way up),
